@@ -103,5 +103,11 @@
 		<?php if (extensionEnabled('comment_form')) { ?>
 			<?php include('inc_print_comment.php'); ?>
 		<?php } ?>
-
+<!--  NEW: plugin support for OpenStreetMap -->
+                <?php
+			if (function_exists('printAddToFavorites')) printAddToFavorites($_zp_current_album);
+			printTags('links', gettext('<strong>Tags:</strong>') . ' ', 'taglist', '');
+			@call_user_func('printOpenStreetMap');
+			?>
+<!-- end of new feature -->
 <?php include('inc_footer.php'); ?>
